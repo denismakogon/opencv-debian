@@ -1,0 +1,42 @@
+name: build_image
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'build/4.5.5/Dockerfile'
+
+env:
+  REGISTRY: ghcr.io
+  OPENCV_VERSION: "4.5.5"
+  BUILD_IMAGE: "build"
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+
+  pr:
+    environment: ghcr.io
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
+        with:
+          driver-opts: network=host
+
+      - name: "opencv-debian:<version>-build image building stage"
+        id: build-image
+        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        with:
+          context: ./build/${{ env.OPENCV_VERSION }}
+          push: false
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.BUILD_IMAGE }}
+          build-args: |
+            OPENCV_VERSION=${{ env.OPENCV_VERSION }}
