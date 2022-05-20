@@ -50,6 +50,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCRIO_TOKEN }}
 
+      - name: Install cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@d6a3abf1bdea83574e28d40543793018b6035605
+        with:
+          cosign-release: 'v1.7.1'
+
       - name: build image metadata
         id: build-meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
