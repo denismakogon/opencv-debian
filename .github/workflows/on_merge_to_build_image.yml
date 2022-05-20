@@ -14,7 +14,7 @@ env:
 
 jobs:
 
-  merge_to_base:
+  merge:
     environment: ghcr.io
     runs-on: ubuntu-latest
     permissions:
