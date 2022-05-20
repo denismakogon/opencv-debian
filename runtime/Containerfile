@@ -372,7 +372,12 @@ ENV runtime_deps="adwaita-icon-theme \
                   perl \
                   perl-modules-5.32"
 
-RUN apt-get update && apt-get -y install --no-install-recommends ${runtime_deps}
+RUN apt-get update && \
+    apt-get -y install --no-install-recommends ${runtime_deps} && \
+    apt-get remove python3-doc python3-tk python3-venv python3.9-venv python3.9-doc -qy && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH /usr/local/lib
