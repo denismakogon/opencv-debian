@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'build/4.5.5/Dockerfile'
+      - '.github/workflows/on_merge_to_build_image.yml'
 
 env:
   REGISTRY: ghcr.io
