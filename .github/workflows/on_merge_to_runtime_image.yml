@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'runtime/Dockerfile'
+      - '.github/workflows/on_merge_to_runtime_image.yml'
 
 env:
   REGISTRY: ghcr.io
