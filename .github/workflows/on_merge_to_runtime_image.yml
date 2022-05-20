@@ -77,4 +77,4 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_EXPERIMENTAL: "true"
-        run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.RUNTIME_IMAGE }}@${{ steps.runtime-meta.outputs.digest }}
+        run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.RUNTIME_IMAGE }}@${{ steps.runtime-image.outputs.digest }}
