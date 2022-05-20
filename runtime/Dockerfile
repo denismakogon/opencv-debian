@@ -1,6 +1,6 @@
 ARG BUILD_IMAGE_DIGEST_TAG="ghcr.io/denismakogon/opencv-debian:4.5.5-build"
 
-FROM ${BUILD_IMAGE_DIGEST_TAG} as build-stge
+FROM ${BUILD_IMAGE_DIGEST_TAG} as build-stage
 
 FROM debian:bullseye-slim
 

@@ -11,13 +11,13 @@ In this repo you'll find:
 ### Build image
 
 ```shell
-podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-build -f build/4.5.5/Containerfile .
+podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-build -f build/4.5.5/Dockerfile .
 ```
 
 ### Runtime image
 
 ```shell
-podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-runtime -f runtime/Containerfile \
+podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-runtime -f runtime/Dockerfile \
   --build-arg "BUILD_IMAGE_DIGEST_TAG=ghcr.io/denismakogon/opencv-debian:4.5.5-build" \
   .
 ```

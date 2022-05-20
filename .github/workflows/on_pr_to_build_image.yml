@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - 'build/4.5.5/Containerfile'
+      - 'build/4.5.5/Dockerfile'
 
 env:
   REGISTRY: ghcr.io
@@ -35,7 +35,7 @@ jobs:
         id: build-image
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./build
+          context: ./build/${{ env.OPENCV_VERSION }}
           push: false
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.BUILD_IMAGE }}
           build-args: |
