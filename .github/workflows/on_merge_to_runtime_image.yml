@@ -66,8 +66,8 @@ jobs:
           build-args: |
             BUILD_IMAGE_DIGEST_TAG=${{ steps.build-image.outputs.digest }}
 
-      - name: Sign the published build image
+      - name: Sign the published runtime image
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_EXPERIMENTAL: "true"
-        run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.RUNTIME_IMAGE }}@${{ steps.build-image.outputs.digest }}
+        run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.OPENCV_VERSION }}-${{ env.RUNTIME_IMAGE }}@${{ steps.runtime-meta.outputs.digest }}
