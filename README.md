@@ -10,5 +10,14 @@ In this repo you'll find:
 
 ### Build image
 
+```shell
+podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-build -f build/4.5.5/Containerfile .
+```
+
 ### Runtime image
 
+```shell
+podman build -t ghcr.io/denismakogon/opencv-debian:4.5.5-runtime -f runtime/Containerfile \
+  --build-arg "BUILD_IMAGE_DIGEST_TAG=ghcr.io/denismakogon/opencv-debian:4.5.5-build" \
+  .
+```

@@ -3,8 +3,6 @@ FROM debian:bullseye-slim
 ARG OPENCV_VERSION=4.5.5
 ARG DEBIAN_FRONTEND=noninteractive
 
-# libgphoto2-dev
-
 ENV build_deps="ca-certificates \
                 wget \
                 unzip \
