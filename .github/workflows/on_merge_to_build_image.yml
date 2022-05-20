@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'build/Containerfile'
+      - 'build/4.5.5/Containerfile'
 
 env:
   REGISTRY: ghcr.io
