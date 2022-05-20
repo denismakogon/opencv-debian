@@ -26,21 +26,6 @@ ENV build_deps="ca-certificates \
                 libopenblas-dev \
                 libgphoto2-dev"
 
-
-#libgtk2.0-dev \
-#libgtk-3-dev \
-#libswscale-dev \
-#libtiff-dev \
-#libv4l-dev \
-#libx264-dev \
-#libxvidcore-dev \
-#libwebp-dev \
-#libpng-dev \
-#libavc1394-0 \
-#libopenblas-dev \
-#libgphoto2-dev \
-ENV runtime_deps="libc-dev libjpeg62-turbo libatlas3-base libavcodec58 libavutil56 libswresample3 libavformat58 "
-
 RUN apt-get update && apt-get -y install --no-install-recommends ${build_deps}
 
 RUN mkdir /tmp/opencv && \
